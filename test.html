@@ -1,0 +1,43 @@
+<html>
+<head>
+	<title>jQuery.requestWithTimeout Test</title>
+</head>
+<body>
+
+<button>Make an AJAX request</button> <span id="message"></span>
+
+<pre>
+$('button').click(function() {
+	// First let's show our loading message to tell the user what is happening.
+	$('#message').html('Making request...');
+	
+	// Now we make a GET request but we tell it to make sure 500 milliseconds
+	// pass before the sucess function is invoked.
+	$.getWithTimeout(500, 'http://tomcoote.co.uk', {}, function() {
+		// This is then called no sooner than 500 milliseconds but possibly
+		// longer, if the request took longer to return, giving time for the user
+		// to read our message!
+		$('#message').html('Success!');
+	});
+});
+</pre>
+
+<script type="text/javascript" src="jquery-1.6.2.min.js"></script>
+<script type="text/javascript" src="jquery.requestWithTimeout.js"></script>
+<script type="text/javascript">
+$('button').click(function() {
+	// First let's show our loading message to tell the user what is happening.
+	$('#message').html('Making request...');
+	
+	// Now we make a GET request but we tell it to make sure 500 milliseconds
+	// pass before the sucess function is invoked.
+	$.getWithTimeout(500, 'http://tomcoote.co.uk', {}, function() {
+		// This is then called no sooner than 500 milliseconds but possibly
+		// longer, if the request took longer to return, giving time for the user
+		// to read our message!
+		$('#message').html('Success!');
+	});
+});
+</script>
+</body>
+</html>
